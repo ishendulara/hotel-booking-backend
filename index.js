@@ -6,6 +6,9 @@ import mongoose from 'mongoose';
 import galleryItemRoutes from './routes/galleryItemRoute.js';
 import jwt from 'jsonwebtoken';
 import categoryRouter from './routes/categoryRoute.js'; // Fixed typo
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express();
 
