@@ -18,7 +18,7 @@ export function postCategory(req, res) {
     });
 }
 
-export function getCategory(req, res) {
+export function getCategory(req, res) {//add catch function
     Category.find().then((list) => {
         res.json({
             list: list
