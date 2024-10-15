@@ -14,14 +14,15 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const connectionString = "mongodb+srv://ishendulara9:1234@cluster0.6qata.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const connectionString = process.env.MONGO_URL
 
 // Authentication middleware
 app.use((req, res, next) => {
     const token = req.header("Authorization")?.replace("Bearer ", ""); // Fixed extraction
 
     if (token != null) {
-        jwt.verify(token, "Ishen@1060", (err, decoded) => {
+        jwt.verify(token, process.env.JWT_TOKEN_KEY, 
+            (err, decoded) => {
             if (decoded != null) {
                 req.user = decoded;
                 console.log("Decoded User", decoded);

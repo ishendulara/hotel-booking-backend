@@ -1,6 +1,7 @@
 import User from '../models/user.js'; // Correct path
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv'
 
 export function postUsers(req, res) {
     const user = req.body;
@@ -53,7 +54,7 @@ export function loginUser(req, res) {
                         type: user.type
                     };
 
-                    const token = jwt.sign(userDetail, "Ishen@1060", { expiresIn: "48h" });
+                    const token = jwt.sign(userDetail, process.env.JWT_TOKEN_KEY, { expiresIn: "48h" });
 
                     res.json({
                         message: "User found",
