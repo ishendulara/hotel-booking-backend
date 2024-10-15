@@ -4,16 +4,24 @@ import mongoose from "mongoose";
 const categorySchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
+        required: true,
+        unique: true
     },
     price: {
         type: String,
         required: true
+    },
+    features :[{
+        type : string
+    }],
+    description: {
+        type: String,
+        required: true
+    },
+    image:{
+        type:String
     }
+   
 });
 
 const Category = mongoose.model("Category", categorySchema);
