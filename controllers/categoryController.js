@@ -2,31 +2,55 @@
 import Category from "../models/category.js";
 
 export function postCategory(req, res) {
-    const category = req.body; // Fixed issue here
 
-    const newCategory = new Category(category);
+  if (req.user == null) {
+    res.status(401).json({
+      message: "Unauthorized"
+    })
+    return
+  }
+  if (req.user.type != "admin") {
+    res.status(403).json({
+      message: "Forbidden"
+    })
+    return
+  }
 
-    newCategory.save().then(() => {
-        res.status(201).json({
-            message: "Category Added Successfully"
-        });
-    }).catch((err) => { // Include error details
-        res.status(500).json({
-            message: "Category Addition Failed",
-            error: err
-        });
-    });
+  const newCategory = new Category(req.body)
+
+  newCategory.save().then(
+    (result) => {
+      res.json(
+        {
+            message: "Category Created Successfullly",
+            result : result
+        }
+      )
+    }
+  ).catch(
+    (err)=>{
+        res.json(
+            {
+                message: "Category Addition Failed",
+                error : err
+            }
+        )
+    }
+  )
 }
 
 export function getCategory(req, res) {
-    Category.find().then((list) => {
-        res.json({
-            list: list
-        });
-    }).catch((err) => { // Catch possible errors
-        res.status(500).json({
-            message: "Failed to fetch categories",
-            error: err
-        });
+  Category.find()
+    .then((list) => {
+      res.json({
+        list: list,
+      });
+    })
+    .catch((err) => {
+      // Catch possible errors
+      res.status(500).json({
+        message: "Failed to fetch categories",
+        error: err,
+      });
     });
 }
