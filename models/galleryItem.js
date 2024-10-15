@@ -19,4 +19,4 @@ const galleryItemSchema = mongoose.Schema(
 
 const GalleryItem = mongoose.model("galleryItems",galleryItemSchema)
 
-export default GalleryItem;
+export default GalleryItem;//then got controllers and create gallery item Controlers

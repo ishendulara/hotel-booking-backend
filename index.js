@@ -4,6 +4,7 @@ import userRouter from './routes/usersRoute.js';
 import mongoose from 'mongoose';
 import galleryItemRoutes from './routes/galleryItemRoute.js';
 import jwt from 'jsonwebtoken';
+import catogoryRouter from './routes/catogoryRoute.js';
 
 const app =  express()
 
@@ -15,7 +16,7 @@ const connectionString = "mongodb+srv://ishendulara9:1234@cluster0.6qata.mongodb
 
 app.use(
     (req,res,next)=>{
-        const token = req.header("Autherization")?.replace("Bearer","")
+        const token = req.header("Autherization")?.replace("Bearer", "");
 
         if(token != null){
             jwt.verify(token,"Ishen@1060",(err,decoded)=>{
@@ -31,7 +32,7 @@ app.use(
             next()
         }
     }
-)
+);
 
  
 mongoose.connect(connectionString).then(
@@ -46,6 +47,8 @@ mongoose.connect(connectionString).then(
 
 
 app.use("/api/users",userRouter)
+app.use("/api/gallery",galleryItemRoutes)
+app.use("/api/catogory",catogoryRouter)
 
 
 
