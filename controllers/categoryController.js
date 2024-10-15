@@ -1,4 +1,4 @@
-// controllers/categoryController.js
+// controllers/categoryController.js in hear
 import Category from "../models/category.js";
 
 export function postCategory(req, res) {
@@ -10,7 +10,12 @@ export function postCategory(req, res) {
         res.status(201).json({
             message: "Category Added Successfully"
         });
-
+    }).catch((err) => { // Include error details
+        res.status(500).json({
+            message: "Category Addition Failed",
+            error: err
+        });
+    });
 }
 
 export function getCategory(req, res) {
