@@ -1,15 +1,15 @@
 // controllers/categoryController.js in hear
 import Category from "../models/category.js";
 
-export function postCategory(req, res) {
+export function postCategory(req, res){
 
-  if (req.user == null) {
+  if(req.user == null){
     res.status(401).json({
       message: "Unauthorized"
     })
     return
   }
-  if (req.user.type != "admin") {
+  if(req.user.type != "admin"){
     res.status(403).json({
       message: "Forbidden"
     })
@@ -37,20 +37,4 @@ export function postCategory(req, res) {
         )
     }
   )
-}
-
-export function getCategory(req, res) {
-  Category.find()
-    .then((list) => {
-      res.json({
-        list: list,
-      });
-    })
-    .catch((err) => {
-      // Catch possible errors
-      res.status(500).json({
-        message: "Failed to fetch categories",
-        error: err,
-      });
-    });
 }
