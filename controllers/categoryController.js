@@ -54,12 +54,13 @@ export function deleteCategory(req,res){
     return
   }
   const name = req.params.name
-  
+
   Category.findOneAndDelete({name:name}).then(
     ()=>{
       res.json({
         message : "Deleted successfully"
       })
+     
     }
   ).catch(
     ()=>{
