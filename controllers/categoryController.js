@@ -41,12 +41,14 @@ export function postCategory(req, res){
 
 //delete category
 export function deleteCategory(req,res){
+
   if(req.user == null){
     res.status(401).json({
       message : "Unauthorized"
     })
     return
   }
+
   if(req.user.type != "admin"){
     res.status(403).json({
       message : "Forbidden"
@@ -66,6 +68,22 @@ export function deleteCategory(req,res){
     ()=>{
       res.json({
         message : "Category deletion failed"
+      })
+    }
+  ) 
+}
+
+export function getCategory(req,res){
+  Category.find().then(
+    (result)=>{
+      res.json({
+        categories  : result
+      })
+    }
+  ).catch(
+    ()=>{
+      res.json({
+        message : "Failed to get categories"
       })
     }
   )
