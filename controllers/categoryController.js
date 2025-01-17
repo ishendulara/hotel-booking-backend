@@ -88,3 +88,7 @@ export function getCategory(req,res){
     }
   )
 }
+
+export function updateCategory(req,res){
+  
+}
