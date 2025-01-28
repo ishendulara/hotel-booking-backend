@@ -97,3 +97,23 @@ export function getCategoryByName(req, res) {
       });
     });
 }
+
+export function updateCategory(req,res){
+  if (req.user == null) {
+    res.status(401).json({
+      message: "Unauthorized",
+    })
+    return
+  }
+
+  if (req.user.type != "admin") {
+    res.status(403).json({
+      message: "Forbidden",
+    })
+    return
+  }
+}  
+
+function isAdminValid(req){
+  
+}
