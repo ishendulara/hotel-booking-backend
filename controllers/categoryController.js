@@ -115,5 +115,7 @@ export function updateCategory(req,res){
 }  
 
 function isAdminValid(req){
-  
+  if(req.user == null){
+    return false
+  }
 }
