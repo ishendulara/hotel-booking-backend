@@ -104,3 +104,29 @@ export function getRooms(req,res){
         }
     )
 }
+
+export function updateRoom(req,res){
+    
+    if (!isAdminValid(req)) {
+        res.status(401).json({
+          message: "Unauthorized",
+        })
+        return
+      }
+   
+      const roomId = req.params.roomId
+
+      Room.findOneAndUpdate({roomId:roomId},req.body).then(
+        ()=>{
+            res.json({
+                message : "Room Updated succesfully"
+            })
+        }
+      ).catch(
+        ()=>{
+            res.json({
+                message : "Room updated failed"
+            })
+        }
+      )
+}
