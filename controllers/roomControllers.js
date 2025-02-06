@@ -12,7 +12,7 @@ export function createRoom(req,res){
     }
 
     const newRoom = newRoom(req.body)
-    
+
     newRoom.save().then(
         (result)=>{
             res.json(
@@ -89,6 +89,18 @@ export function  findRoomById(req,res){
     )
 }
 
-export function getRooms(req.res){
-    Room.find()
+export function getRooms(req,res){
+    Room.find().then(
+        (result)=>{
+            res.json({
+                rooms : result
+            })
+        }
+    )catch(
+        ()=>{
+            res.json({
+                message : "Failed to get Rooms"
+            })
+        }
+    )
 }
