@@ -96,7 +96,7 @@ export function getRooms(req,res){
                 rooms : result
             })
         }
-    )catch(
+    ).catch(
         ()=>{
             res.json({
                 message : "Failed to get Rooms"
