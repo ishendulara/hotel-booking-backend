@@ -99,16 +99,12 @@ export function getCategoryByName(req, res) {
 }
 
 export function updateCategory(req,res){
-  if (req.user == null) {
+
+  //const isAdminValid = isAdminValid(req) we can call it in brackets
+
+  if (!isAdminValid(req)) {
     res.status(401).json({
       message: "Unauthorized",
-    })
-    return
-  }
-
-  if (req.user.type != "admin") {
-    res.status(403).json({
-      message: "Forbidden",
     })
     return
   }
@@ -116,10 +112,10 @@ export function updateCategory(req,res){
 
 function isAdminValid(req){
   if(req.user == null){
-    return false
+    return false//not a user
   }
   if (req.user.type != "admin") {
-    return false
+    return false//not a admin
   }
-  return true
+  return true//now he is a admin
 }
