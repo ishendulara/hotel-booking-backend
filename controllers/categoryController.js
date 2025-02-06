@@ -108,6 +108,21 @@ export function updateCategory(req,res){
     })
     return
   }
+   
+  const name = req.params.name; //as the name of the category you want to update
+
+  Category.updateOne({name:name},req.body).then(    //procedeur
+    ()=>{
+      res.json({
+        message: "category updated sucsessfully"
+      })
+    }).catch(
+      ()=>{
+        res.json({
+          message : "failed to update category"
+        })
+      }
+    )
 }  
 
 function isAdminValid(req){
