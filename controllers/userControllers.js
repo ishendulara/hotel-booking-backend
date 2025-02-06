@@ -71,3 +71,13 @@ export function loginUser(req, res) {
             });
         });
 }
+
+export function isAdminValid(req){
+    if(req.user == null){
+      return false//not a user
+    }
+    if (req.user.type != "admin") {
+      return false//not a admin
+    }
+    return true//now he is a admin
+  }

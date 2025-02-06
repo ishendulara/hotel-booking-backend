@@ -1,5 +1,6 @@
 // controllers/categoryController.js in hear
 import Category from "../models/category.js";
+import { isAdminValid } from "./userControllers.js";
 
 export function postCategory(req, res) {
   if (req.user == null) {
@@ -125,12 +126,3 @@ export function updateCategory(req,res){
     )
 }  
 
-function isAdminValid(req){
-  if(req.user == null){
-    return false//not a user
-  }
-  if (req.user.type != "admin") {
-    return false//not a admin
-  }
-  return true//now he is a admin
-}

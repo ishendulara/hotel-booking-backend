@@ -12,6 +12,6 @@ categoryRouter.get("/",getCategory)
 
 categoryRouter.get("/:name",getCategoryByName)
 
-categoryRouter.update("/:name",updateCategory)
+categoryRouter.put("/:name",updateCategory)
 
 export default categoryRouter;//fix
