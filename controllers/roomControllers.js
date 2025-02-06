@@ -1,4 +1,4 @@
-import { Error } from "mongoose";
+import mongoose from "mongoose";
 import Room from "../models/room.js";
 import { isAdminValid } from "./userControllers.js";
 
@@ -53,7 +53,7 @@ export function deleteRoom(req,res){
         }
     ).catch(
         ()=>{
-            res.jason({
+            res.json({
                 message:"Room deletion Failed"
             })
         }
@@ -62,7 +62,7 @@ export function deleteRoom(req,res){
 
 export function  findRoomById(req,res){
 
-    const roomId = res.params.roomId
+    const roomId = req.params.roomId
 
     Room.findOne({roomId:roomId}).then(
         (result)=>{
