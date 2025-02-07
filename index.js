@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 import categoryRouter from './routes/categoryRoute.js'; // Fixed typo
 import roomRouter from './routes/roomRoute.js';
 import dotenv from 'dotenv'
+import bookingRouter from './routes/bookingRoute.js';
 
 
 dotenv.config();
@@ -48,6 +49,7 @@ app.use("/api/users",userRouter);
 app.use("/api/gallery",galleryItemRoutes);
 app.use("/api/category",categoryRouter); // Fixed typo
 app.use("/api/rooms",roomRouter);
+app.use("/api/booking",bookingRouter);
 
 app.listen(5000, () => {
     console.log("Server is running on port 5000");//done
