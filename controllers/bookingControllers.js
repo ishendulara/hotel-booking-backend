@@ -1,3 +1,6 @@
 import Booking from "../models/booking";
 
-export function createBooking
+export function createBooking(req,res){
+
+    var starting 
+}
