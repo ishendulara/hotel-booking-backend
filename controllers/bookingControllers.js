@@ -7,7 +7,7 @@ export function createBooking(req,res){
     Booking.countDocuments({}).then(
         (count)=>{
            console.log(count);
-           const newId = startingId + count;
+           const newId = "INV"+startingId + count;
         }
     )
 }

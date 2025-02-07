@@ -81,3 +81,13 @@ export function isAdminValid(req){
     }
     return true//now he is a admin
   }
+
+export function isCustomerValide(req){
+    if(req.User == null){
+        return false;
+    }
+    if(req.user.type != "customer"){
+        return false;
+    }
+    return true;
+}
