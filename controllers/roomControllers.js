@@ -11,7 +11,7 @@ export function createRoom(req,res){
           return
     }
 
-    const newRoom = newRoom(req.body)
+    const newRoom = new Room(req.body)
 
     newRoom.save().then(
         (result)=>{
@@ -37,7 +37,7 @@ export function createRoom(req,res){
 export function deleteRoom(req,res){
 
     if(!isAdminValid(req)){
-        res.status(401).jason({
+        res.status(401).json({
             message : "Unauthorized"
         })
         return

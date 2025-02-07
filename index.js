@@ -6,9 +6,11 @@ import mongoose from 'mongoose';
 import galleryItemRoutes from './routes/galleryItemRoute.js';
 import jwt from 'jsonwebtoken';
 import categoryRouter from './routes/categoryRoute.js'; // Fixed typo
+import roomRouter from './routes/roomRoute.js';
 import dotenv from 'dotenv'
 
-dotenv.config()
+
+dotenv.config();
 
 const app = express();
 
@@ -45,6 +47,7 @@ mongoose.connect(connectionString).then(() => {
 app.use("/api/users",userRouter);
 app.use("/api/gallery",galleryItemRoutes);
 app.use("/api/category",categoryRouter); // Fixed typo
+app.use("/api/rooms",roomRouter);
 
 app.listen(5000, () => {
     console.log("Server is running on port 5000");//done
