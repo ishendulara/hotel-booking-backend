@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const bokkingSchema = new mongoose.Schema(
+const bookingSchema = new mongoose.Schema(
     {
         bookingId:{
             type : Number,
@@ -35,6 +35,14 @@ const bokkingSchema = new mongoose.Schema(
         notes:{
             type : String,
             default : ""
+        },
+        timestamp:{
+            type : Date,
+            default : Date.now
         }
     }
 )
+
+const Booking = mongoose.model("Bookings",bookingSchema)
+
+export default Booking;
