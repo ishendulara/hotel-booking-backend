@@ -82,12 +82,14 @@ export function isAdminValid(req){
     return true//now he is a admin
   }
 
-export function isCustomerValide(req){
-    if(req.User == null){
-        return false;
+  export function isCustomerValide(req) {
+    if (req.user == null) { // Fixed the typo from req.User to req.user
+        console.log("Validation failed: No user in request");
+        return false; // Not a user
     }
-    if(req.user.type != "customer"){
-        return false;
+    if (req.user.type !== "customer") {
+        console.log("Validation failed: User is not a customer");
+        return false; // Not a customer
     }
-    return true;
+    return true; // The user is valid
 }
