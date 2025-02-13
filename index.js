@@ -45,11 +45,11 @@ mongoose.connect(connectionString).then(() => {
     console.log("Database connection failed", err);
 });
 
-app.use("/api/users",userRouter);
+/*app.use("/api/users",userRouter);
 app.use("/api/gallery",galleryItemRoutes);
 app.use("/api/category",categoryRouter); // Fixed typo
 app.use("/api/rooms",roomRouter);
-app.use("/api/booking",bookingRouter);
+app.use("/api/booking",bookingRouter);*/
 
 app.listen(5000, () => {
     console.log("Server is running on port 5000");//done
